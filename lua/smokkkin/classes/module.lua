@@ -7,10 +7,10 @@ function class:constructor(name)
 end
 
 --- Enables module: adds hooks, commands etc
----@param log boolean
+---@param log? boolean
 function class:enable(log)
   if (log) then
-    smokkkin.log.debug("Enabling module %s", self.name)
+    smokkkin.log:debug("Enabling module %s", self.name)
   end
 
   self:enableHooks()
@@ -24,10 +24,10 @@ end
 function class:onEnable()
 end
 
----@param log boolean
+---@param log? boolean
 function class:disable(log)
   if (log) then
-    smokkkin.log.debug("Disabling module %s", self.name)
+    smokkkin.log:debug("Disabling module %s", self.name)
   end
 
   self:disableHooks()

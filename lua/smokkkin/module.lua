@@ -8,6 +8,7 @@ smokkkin.module = {
 local module_class = smokkkin.class:get("Module")
 
 --- Creates and insertes a new module to the list.
+---
 ---@param name string
 function smokkkin.module:new(name)
   local module = setmetatable({
@@ -25,14 +26,14 @@ function smokkkin.module:new(name)
 end
 
 ---@param name string
----@return Module | nil
+---@return Module?
 function smokkkin.module:get(name)
   return self.list[name]
 end
 
 ---@private
 ---@param name string
----@param module Module | nil
+---@param module? Module
 function smokkkin.module:set(name, module)
   self.list[name] = module
 end

@@ -1,0 +1,21 @@
+{
+    "runtime.nonstandardSymbol": [
+        "!",
+        "!=",
+        "&&",
+        "||",
+        "//",
+        "/**/",
+        "continue"
+    ],
+    "diagnostics.disable": [
+        "duplicate-set-field"
+    ],
+    "runtime.special": {
+        "IncludeCS": "dofile",
+        "include": "dofile"
+    },
+    "workspace.library": [
+        "C:/Users/smoki/AppData/Local/nvim-data/addons/garrysmod/library"
+    ]
+}

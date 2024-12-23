@@ -1,22 +1,11 @@
 --- A library that add logic for the modules.
 smokkkin.module = {
   --- A list of modules.
-  ---@type Module
+  ---@type table<number, Module>
   list = {}
 }
 
----@class Module
-local module_class = {
-  --- Fields
-  name = "",
-  version = "1.0.0",
-  repository = "https://github.com/smokingplaya/",
-  description = "",
-  authors = {},
-  hooks = {},
-}
-
-module_class.__index = module_class
+local module_class = smokkkin.class:get("Module")
 
 --- Creates and insertes a new module to the list.
 ---@param name string

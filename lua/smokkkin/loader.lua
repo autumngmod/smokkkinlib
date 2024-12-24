@@ -12,6 +12,8 @@ function smokkkin.loader:includeCl(path)
   return include(path)
 end
 
+smokkkin.loader.client = smokkkin.loader.includeCl
+
 --- Includes file on a both sides
 ---
 ---@param path string Path to the script
@@ -24,6 +26,8 @@ function smokkkin.loader:includeSh(path)
   return include(path)
 end
 
+smokkkin.loader.shared = smokkkin.loader.includeSh
+
 --- Includes file only on serverside
 ---
 ---@param path string
@@ -33,6 +37,8 @@ function smokkkin.loader:includeSv(path)
     return include(path)
   end
 end
+
+smokkkin.loader.server = smokkkin.loader.includeSv
 
 smokkkin.loader.prefix = {
   cl_ = smokkkin.loader.includeCl,

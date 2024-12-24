@@ -11,29 +11,38 @@ class.__index = class
 class.__tostring = function(self)
   return "[Instance " .. (self.__name or "n/a") .. "]"
 end
+class.constructor = function() end
 
 --- Creates a class (metatable) and
 --- registers it through RegisterMetaTable
 ---
 --- @param name string Name of the class
 function smokkkin.class:new(name)
-  local class = setmetatable({
-    __index = {},
-    __name = name,
-  }, class)
+  local base = setmetatable({}, class)
+  base.__index = base
 
-  self.list[name] = class
+  self.list[name] = base
+   
+  RegisterMetaTable(name, base)
 
-  RegisterMetaTable(name, class)
-
-  return class
+  return base
 end
 
 --- Returns a ClassObject
 ---
+---@param name string
+---@param includeState? State
 ---@return ClassObject? ClassObject
-function smokkkin.class:get(name)
-  return self.list[name]
+function smokkkin.class:get(name, includeState)
+  local class = self.list[name]
+
+  if (!class) then
+    local includer = smokkkin.loader[includeState || "shared"]
+    -- Well well...
+    class = includer(smokkkin.loader, "smokkkin/classes/" .. name:Trim():lower() .. ".lua")
+  end
+
+  return class
 end
 
 --- Creates instance of the class

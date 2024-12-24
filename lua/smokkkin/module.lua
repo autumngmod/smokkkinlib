@@ -5,15 +5,20 @@ smokkkin.module = {
   list = {}
 }
 
-local module_class = smokkkin.class:get("Module")
+local moduleClass = smokkkin.class:get("Module")
+
+---@private
+---@class ModuleData
+---@field data table<"name" | "description" | "version" | "repository", string>
+---@field include table<State, table<number, string>>
 
 --- Creates and insertes a new module to the list.
 ---
 ---@param name string
-function smokkkin.module:new(name)
-  local module = setmetatable({
-    name = name,
-  }, module_class)
+---@param data ModuleData
+function smokkkin.module:new(name, data)
+  local module = new("Module", name)
+  -- todo @ place "data" field somewhere...
 
   -- If module already existed
   if (self:get(name)) then
@@ -21,6 +26,9 @@ function smokkkin.module:new(name)
   end
 
   self:set(name, module)
+
+  module:include(data.include or {})
+  module:enable()
 
   return module
 end
@@ -43,11 +51,9 @@ end
 function smokkkin.module:remove(name)
   local module = self:get(name)
 
-  if (!module) then
-    return
+  if (module) then
+    module:disable(false)
   end
-
-  module:disable()
 
   self:set(name, nil)
 end
@@ -76,8 +82,21 @@ function smokkkin.module:disable(name)
   module:disable()
 end
 
+local moduleBasePath = moduleClass.base
+local moduleEntrypoint = "_module.lua"
 --- Loades all modules
 ---@private
 function smokkkin.module:initialize()
+  smokkkin.log:info("Loading modules")
 
+  local loadedModules = 0
+  local _, dirs = file.Find(moduleBasePath .. "*", "LUA")
+
+  for _, module in ipairs(dirs) do
+    smokkkin.loader:includeSh(moduleBasePath .. module .. "/" .. moduleEntrypoint)
+  end
+
+  smokkkin.log:info("Loaded %s modules", loadedModules)
 end
+
+smokkkin.module:initialize()

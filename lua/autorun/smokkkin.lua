@@ -1,7 +1,11 @@
+--- Additions
+---@generic T
+---@alias List table<number, T>
+
 smokkkin = {}
 smokkkin.authors = {"smokingplaya"}
 smokkkin.repository = "https://github.com/oosdinc/smokkkinlib"
-smokkkin.version = "1.0.1"
+smokkkin.version = "1.0.2"
 
 if (SERVER) then
   AddCSLuaFile("smokkkin/loader.lua")

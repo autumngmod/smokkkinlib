@@ -16,6 +16,6 @@
         "include": "dofile"
     },
     "workspace.library": [
-        "C:/Users/smoki/AppData/Local/nvim-data/addons/garrysmod/library"
+        "/home/smokkkin/.local/share/nvim/addons/gmod/library"
     ]
 }

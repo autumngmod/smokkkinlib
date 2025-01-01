@@ -1,16 +1,32 @@
 --- A library that add logic for the modules.
 smokkkin.module = {
   --- A list of modules.
-  ---@type table<number, Module>
+  ---@type List<Module>
   list = {}
 }
 
 local moduleClass = smokkkin.class:get("Module")
 
 ---@private
+---@class ModuleDataInfo
+---@field name string
+---@field description string?
+---@field authors List<string>
+---@field git string?
+---@field version string
+---@field libVersion string?
+
+---@private
+---@class ModuleDataInclude
+---@field client List<string>?
+---@field shared List<string>?
+---@field server List<string>?
+
+---@private
 ---@class ModuleData
----@field data table<"name" | "description" | "version" | "repository", string>
----@field include table<State, table<number, string>>
+---@field info ModuleDataInfo
+---@field include ModuleDataInclude
+---@field config table<string, any>
 
 --- Creates and insertes a new module to the list.
 ---
@@ -18,10 +34,9 @@ local moduleClass = smokkkin.class:get("Module")
 ---@param data ModuleData
 function smokkkin.module:new(name, data)
   local module = new("Module", name)
-  -- todo @ place "data" field somewhere...
+  -- todo @ place "info" field field somewhere...
 
-  -- If module already existed
-  if (self:get(name)) then
+  if (self:get(name)) then -- If module already existed
     self:remove(name)
   end
 

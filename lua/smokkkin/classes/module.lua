@@ -118,7 +118,7 @@ end
 
 --- Includes files that associated with module
 ---
----@param fileList table<State, table<number, string>>
+---@param fileList table<State, List<string>>
 function class:include(fileList)
   local loader = smokkkin.loader
 

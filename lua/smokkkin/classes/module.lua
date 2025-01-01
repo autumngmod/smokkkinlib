@@ -2,6 +2,7 @@
 ---@field path string Path to the module
 ---@field base string
 ---@field hooks table<string, table<string, function>>
+---@field config table<string, any>
 local class = smokkkin.class:new("Module")
 class.base = "smokkkin/modules/"
 class.path = class.base
@@ -22,13 +23,15 @@ class.events = {
   playerJoined = "PlayerInitialSpawn",
 }
 
----@param name string
-function class:constructor(name)
+---@param data ModuleData
+function class:constructor(data)
   -- Magic number (stack)
   local moduleDir = debug.getinfo(4)
     .source:match("modules/([^/]+)/") -- yep
 
-  self.name = name
+  self.name = data.info.name
+  self.info = data.info
+  self.config = data.config or {}
   self.path = self.path .. moduleDir
 end
 

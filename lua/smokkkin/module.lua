@@ -26,14 +26,14 @@ local moduleClass = smokkkin.class:get("Module")
 ---@class ModuleData
 ---@field info ModuleDataInfo
 ---@field include ModuleDataInclude
----@field config table<string, any>
+---@field config? table<string, any>
 
 --- Creates and insertes a new module to the list.
 ---
 ---@param name string
 ---@param data ModuleData
 function smokkkin.module:new(name, data)
-  local module = new("Module", name)
+  local module = new("Module", data)
   -- todo @ place "info" field field somewhere...
 
   if (self:get(name)) then -- If module already existed
@@ -43,7 +43,7 @@ function smokkkin.module:new(name, data)
   self:set(name, module)
 
   module:include(data.include or {})
-  module:enable()
+  module:enable(true)
 
   return module
 end

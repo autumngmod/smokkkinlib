@@ -1,4 +1,4 @@
----@class Module: ClassObject
+---@class Module: Class
 ---@field path string Path to the module
 ---@field base string
 ---@field hooks table<string, table<string, function>>
@@ -33,8 +33,8 @@ function class:constructor(data)
   self.info = data.info
   self.config = data.config or {}
   self.path = self.path .. moduleDir
+  self.logger = new("Logger", moduleDir)
 end
-
 --- Generates unique id for the event listener.
 ---
 ---@private
@@ -52,7 +52,7 @@ end
 ---@param log? boolean
 function class:enable(log)
   if (log) then
-    smokkkin.log:debug("Enabling module %s", self.name)
+    smokkkin.logger:debug("Enabling module %s", self.name)
   end
 
   self:enableHooks()
@@ -78,7 +78,7 @@ end
 ---@param log? boolean
 function class:disable(log)
   if (log) then
-    smokkkin.log:debug("Disabling module %s", self.name)
+    smokkkin.logger:debug("Disabling module %s", self.name)
   end
 
   self:disableHooks()

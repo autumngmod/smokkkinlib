@@ -1,10 +1,10 @@
 --- Library for easier class creation
 smokkkin.class = {
-  ---@type table<string, ClassObject>
+  ---@type table<string, Class>
   list = {}
 }
 
----@class ClassObject
+---@class Class
 ---@field __name string Name of the class
 local class = {}
 class.__index = class
@@ -28,18 +28,32 @@ function smokkkin.class:new(name)
   return base
 end
 
+---@private
+---@param name string
+---@param includeState State
+function smokkkin.class:load(name, includeState)
+  --- path
+  local p = ("smokkkin/classes/%s.lua"):format(name:Trim():lower())
+  --- loader
+  local l = smokkkin.loader
+  --- state
+  local s = includeState || "shared"
+
+  --- eheheheh
+  l[s](l, p)
+end
+
 --- Returns a ClassObject
 ---
 ---@param name string
 ---@param includeState? State
----@return ClassObject? ClassObject
+---@return Class
 function smokkkin.class:get(name, includeState)
   local class = self.list[name]
 
   if (!class) then
-    local includer = smokkkin.loader[includeState || "shared"]
-    -- Well well...
-    class = includer(smokkkin.loader, "smokkkin/classes/" .. name:Trim():lower() .. ".lua")
+    self:load(name, includeState)
+    class = self.list[name]
   end
 
   return class
@@ -47,7 +61,7 @@ end
 
 --- Creates instance of the class
 ---
----@generic R: ClassObject
+---@generic R: Class
 ---@param name string Name/ClassObject of the class
 ---@return R Instance of the class
 function smokkkin.class.createInstance(name, ...)

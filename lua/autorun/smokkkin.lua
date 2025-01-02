@@ -5,7 +5,7 @@
 smokkkin = {}
 smokkkin.authors = {"smokingplaya"}
 smokkkin.repository = "https://github.com/oosdinc/smokkkinlib"
-smokkkin.version = "1.0.2"
+smokkkin.version = "1.0.3"
 
 if (SERVER) then
   AddCSLuaFile("smokkkin/loader.lua")
@@ -15,9 +15,10 @@ include("smokkkin/loader.lua")
 
 local load_order = {
   "config.lua",
-  "log.lua",
   "class.lua",
-  "module.lua"
+  "logger.lua",
+  "util.lua",
+  "module.lua",
 }
 
 for _, filename in ipairs(load_order) do

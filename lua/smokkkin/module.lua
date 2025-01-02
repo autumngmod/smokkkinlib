@@ -99,19 +99,19 @@ end
 
 local moduleBasePath = moduleClass.base
 local moduleEntrypoint = "_module.lua"
+
 --- Loades all modules
 ---@private
 function smokkkin.module:initialize()
-  smokkkin.log:info("Loading modules")
+  smokkkin.logger:info("Loading modules")
 
-  local loadedModules = 0
   local _, dirs = file.Find(moduleBasePath .. "*", "LUA")
 
   for _, module in ipairs(dirs) do
     smokkkin.loader:includeSh(moduleBasePath .. module .. "/" .. moduleEntrypoint)
   end
 
-  smokkkin.log:info("Loaded %s modules", loadedModules)
+  smokkkin.logger:info("Loaded %s modules", #dirs)
 end
 
 smokkkin.module:initialize()

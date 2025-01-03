@@ -5,7 +5,7 @@
 smokkkin = {}
 smokkkin.authors = {"smokingplaya"}
 smokkkin.repository = "https://github.com/oosdinc/smokkkinlib"
-smokkkin.version = "1.0.3"
+smokkkin.version = "1.0.4"
 
 if (SERVER) then
   AddCSLuaFile("smokkkin/loader.lua")

@@ -1,7 +1,7 @@
 --- A library that add logic for the modules.
 smokkkin.module = {
   --- A list of modules.
-  ---@type List<Module>
+  ---@type Module[]
   list = {}
 }
 
@@ -11,16 +11,16 @@ local moduleClass = smokkkin.class:get("Module")
 ---@class ModuleDataInfo
 ---@field name string
 ---@field description string?
----@field authors List<string>
+---@field authors string[]
 ---@field git string?
 ---@field version string
 ---@field libVersion string?
 
 ---@private
 ---@class ModuleDataInclude
----@field client List<string>?
----@field shared List<string>?
----@field server List<string>?
+---@field client string[]?
+---@field shared string[]?
+---@field server string[]?
 
 ---@private
 ---@class ModuleData

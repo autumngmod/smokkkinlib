@@ -18,8 +18,11 @@ local load_order = {
   "class.lua",
   "logger.lua",
   "util.lua",
-  "module.lua",
+  "network.lua",
 }
+
+--- Always must be on last place
+load_order[#load_order+1] = "module.lua"
 
 for _, filename in ipairs(load_order) do
   smokkkin.loader:includeSh("smokkkin/" .. filename)

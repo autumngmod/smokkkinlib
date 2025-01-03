@@ -1,8 +1,10 @@
 ---@class Module: Class
 ---@field path string Path to the module
 ---@field base string
+---@field dir string
 ---@field hooks table<string, table<string, function>>
 ---@field config table<string, any>
+---@field logger Logger
 local class = smokkkin.class:new("Module")
 class.base = "smokkkin/modules/"
 class.path = class.base
@@ -32,6 +34,7 @@ function class:constructor(data)
   self.name = data.info.name
   self.info = data.info
   self.config = data.config or {}
+  self.dir = moduleDir
   self.path = self.path .. moduleDir
   self.logger = new("Logger", moduleDir)
 end
@@ -41,7 +44,7 @@ end
 ---@param eventId string Id of the event
 ---@return string
 function class:getEventId(eventId)
-  return "smokkkin:" .. self.name .. ":" .. eventId
+  return "smokkkin:" .. self.dir .. ":" .. eventId
 end
 
 function class:getEventName(eventName)
@@ -121,7 +124,7 @@ end
 
 --- Includes files that associated with module
 ---
----@param fileList table<State, List<string>>
+---@param fileList table<State, string[]>
 function class:include(fileList)
   local loader = smokkkin.loader
 
@@ -131,7 +134,7 @@ function class:include(fileList)
 
       includer(loader, self.path .. "/" .. file)
     end
-  end  
+  end
 end
 
 return class

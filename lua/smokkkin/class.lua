@@ -1,7 +1,7 @@
 --- Library for easier class creation
 smokkkin.class = {
   ---@type table<string, Class>
-  list = {}
+  list = {},
 }
 
 ---@class Class

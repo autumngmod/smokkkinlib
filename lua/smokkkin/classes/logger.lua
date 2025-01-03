@@ -53,6 +53,7 @@ end
 ---@private
 ---@return string Time
 function class:getTime()
+---@diagnostic disable-next-line: return-type-mismatch
   return os.date(smokkkin.config.timeFormat, os.time())
 end
 

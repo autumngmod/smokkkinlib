@@ -1,21 +1,29 @@
 {
-    "runtime.nonstandardSymbol": [
-        "!",
-        "!=",
-        "&&",
-        "||",
-        "//",
-        "/**/",
-        "continue"
-    ],
-    "diagnostics.disable": [
-        "duplicate-set-field"
-    ],
-    "runtime.special": {
-        "IncludeCS": "dofile",
-        "include": "dofile"
-    },
-    "workspace.library": [
-        "/home/smokkkin/.local/share/nvim/addons/gmod/library"
-    ]
+  "runtime.nonstandardSymbol": [
+    "!",
+    "!=",
+    "&&",
+    "||",
+    "//",
+    "/**/",
+    "continue"
+  ],
+  "diagnostics.disable": [
+    "duplicate-set-field"
+  ],
+  "runtime.special": {
+    "IncludeCS": "dofile",
+    "include": "dofile"
+  },
+  "workspace.library": [
+    "/home/smokkkin/.local/share/nvim/addons/gmod/library",
+    "${addons}/garrysmod/module/library"
+  ],
+  "runtime.version": "LuaJIT",
+  "workspace.checkThirdParty": false,
+  "diagnostics.globals": [
+    "smokkkin",
+    "new",
+    "CHTTP"
+  ]
 }

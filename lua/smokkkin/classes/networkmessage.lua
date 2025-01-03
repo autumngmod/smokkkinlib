@@ -67,12 +67,12 @@ function class:getName()
   return self.name
 end
 
---- todo
----@param data
+---@param data NetworkSendArguments
 function class:reply(data)
-  net.Start("smokkkin")
-  net.WriteString(self.id)
-  net.WriteString(self.name)
-  net.WriteBool(self.isReply)
-  net[self.sender == NULL and "SendToServer" or "Send"]()
+  smokkkin.network:send({
+    name = self.name,
+    id = self.id,
+    isReply = true,
+    content = data
+  })
 end

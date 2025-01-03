@@ -120,7 +120,10 @@ end
 function class:onDisable()
 end
 
----@alias State "client" | "shared" | "server"
+---@alias State
+---|"client"
+---| "shared"
+---| "server"
 
 --- Includes files that associated with module
 ---

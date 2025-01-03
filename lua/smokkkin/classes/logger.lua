@@ -41,7 +41,7 @@ function class:error(log, ...)
   self:log(ERROR, "ERROR", log:format(...))
 end
 
-local FATAL = Color(128, 0, 0)
+local FATAL = Color(200, 0, 0)
 ---@param log string
 ---@vararg ... string | number
 function class:fatal(log, ...)

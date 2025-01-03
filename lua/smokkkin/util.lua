@@ -8,3 +8,17 @@ function smokkkin.util:readJsonFile(path)
 
   return util.JSONToTable(content)
 end
+
+--- Loads
+---
+---@param name string
+---@return any
+function smokkkin.util:requireDynamicLibary(name)
+  if (!util.IsBinaryModuleInstalled(name)) then
+    smokkkin.logger:fatal("Failed to load the %s dynamic module.", name)
+
+    return false
+  end
+
+  require(name)
+end

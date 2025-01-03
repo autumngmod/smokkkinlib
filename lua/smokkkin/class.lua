@@ -30,7 +30,7 @@ end
 
 ---@private
 ---@param name string
----@param includeState State
+---@param includeState? State
 function smokkkin.class:load(name, includeState)
   --- path
   local p = ("smokkkin/classes/%s.lua"):format(name:Trim():lower())
@@ -68,6 +68,7 @@ function smokkkin.class.createInstance(name, ...)
   local classBase = smokkkin.class:get(name)
   local instance = setmetatable({}, classBase)
 
+  ---@diagnostic disable: redundant-parameter
   instance:constructor(...)
 
   return instance

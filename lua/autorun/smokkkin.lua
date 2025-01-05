@@ -6,11 +6,7 @@ smokkkin = {
   }
 }
 
-if (SERVER) then
-  AddCSLuaFile("smokkkin/loader.lua")
-end
-
-include("smokkkin/loader.lua")
+IncludeCS("smokkkin/loader.lua")
 
 local load_order = {
   "config.lua",

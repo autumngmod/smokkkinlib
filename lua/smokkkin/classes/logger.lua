@@ -4,6 +4,7 @@ local class = smokkkin.class:new("Logger")
 ---@param name string
 function class:constructor(name)
   self.name = name
+  self.counter = 0
 end
 
 local TRACE = Color(255, 0, 255)
@@ -48,6 +49,11 @@ function class:fatal(log, ...)
   self:log(FATAL, "FATAL", log:format(...))
 end
 
+---@return integer
+function class:getLogCount()
+  return self.counter
+end
+
 --- Returns formatted time
 ---
 ---@private
@@ -67,4 +73,6 @@ function class:log(color, prefix, msg)
 
   MsgC(color, pattern:format(time, prefix, self.name), color_white, msg)
   MsgN()
+
+  self.counter = self.counter + 1
 end

@@ -42,7 +42,7 @@ end
 ---@private
 ---@class NetworkString
 ---@field key string
----@field type "string" | "i8" | "i16" | "i32" | "u8" | "u16" | "u32" | "u64" | "angle" | "vector" | "bit" | "bool" | "color" | "entity" | "player"
+---@field type "string" | "i8" | "i16" | "i32" | "u8" | "u16" | "u32" | "u64" | "angle" | "vector" | "bit" | "bool" | "color" | "data" | "entity" | "player"
 
 ---@private
 ---@class NetworkStringProvider
@@ -52,7 +52,7 @@ end
 --- Registeres template for the messages
 ---
 ---@param name string
----@param strings NetworkStringProvider 
+---@param strings NetworkStringProvider
 function smokkkin.network:register(name, strings)
   self.strings[name] = strings
 end
@@ -100,7 +100,7 @@ end
 ---@private
 ---@return string MD5 Id
 function smokkkin.network:generateUniqueId()
-  return util.MD5("network:" .. os.time() .. ":" .. math.random(0, 100))
+  return util.MD5("network:" .. os.time() .. ":" .. math.random(0, 1000000))
 end
 
 ---@private

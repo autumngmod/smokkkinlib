@@ -55,14 +55,17 @@ end
 ---@param log? boolean
 function class:enable(log)
   if (log) then
-    smokkkin.logger:debug("Enabling module %s", self.name)
+    smokkkin.logger:info("Enabling module %s", self.name)
   end
 
   self:enableHooks()
-  --todo
-  --self:enableCommands()
+  --self self:enableCommands()
 
   self:onEnable()
+
+  if (self.logger:getLogCount() > 0) then
+    print()
+  end
 end
 
 function class:enableHooks()

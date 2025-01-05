@@ -23,13 +23,13 @@ git clone https://github.com/autumngmod/smokkkinlib
   * [Общие сведения](/documentation/classes/README.md)
 * Модули
   * [Общие сведения](/documentation/classes/README.md)
-* Основные библиотеки
+* Библиотеки
   * [Class](/documentation/classes/README.md)
   * [HTTP](/documentation/libraries/http.md)
   * [Loader](/documentation/libraries/loader.md)
-  * [Logger](/documentation/libraries/logger.md)
+  * [Logger](/documentation/classes/logger.md)
   * [Module](/documentation/modules/README.md)
-  * [Network (``net.*``)](/documentation/libraries/network.md)
+  * [Network (based on ``net.*``)](/documentation/libraries/network.md)
   * [Utils](/documentation/libraries/utils.md)
 
 # Советы

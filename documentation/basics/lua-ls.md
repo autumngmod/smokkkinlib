@@ -34,5 +34,5 @@ LuaLS с расширением Garry's Mod, для VSCode и Neovim.
     ```lua
     require("lua-ls")
     ```
-    3. Нажмите ``Esc``, и впишите ``Lazy sync``
-2. 
+    3. Нажмите ``Esc``, и впишите ``:Lazy sync``
+2.

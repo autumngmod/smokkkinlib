@@ -2,24 +2,34 @@ smokkkin = {
   addon = {
     authors = {"smokingplaya"},
     repository = "https://github.com/oosdinc/smokkkinlib",
-    version = "1.0.5"
+    version = "1.0.6"
   }
 }
 
 IncludeCS("smokkkin/loader.lua")
 
-local load_order = {
-  "config.lua",
-  "util.lua",
-  "class.lua",
-  "logger.lua",
+local order = {
+  shared = {
+    "config.lua",
+    "util.lua",
+    "class.lua",
+    "logger.lua",
+    "http.lua",
+    "network.lua",
+  },
 
-  "http.lua",
-  "network.lua",
+  client = {
+    "webview.lua"
+  }
 }
 
-for _, filename in ipairs(load_order) do
-  smokkkin.loader:includeSh("smokkkin/" .. filename)
+local loader = smokkkin.loader
+for state, tab in pairs(order) do
+  local include = loader[state]
+
+  for _, filename in ipairs(tab) do
+    include(loader, "smokkkin/" .. filename)
+  end
 end
 
 smokkkin.loader:includeSh("smokkkin/module.lua")

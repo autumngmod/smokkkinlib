@@ -16,10 +16,6 @@ local order = {
     "logger.lua",
     "http.lua",
     "network.lua",
-  },
-
-  client = {
-    "webview.lua"
   }
 }
 

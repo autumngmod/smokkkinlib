@@ -27,9 +27,9 @@ class.events = {
 
 ---@param data ModuleData
 function class:constructor(data)
-  -- Magic number (stack)
+  -- Magic number (actually based on stack)
   local moduleDir = debug.getinfo(4)
-    .source:match("modules/([^/]+)/") -- yep
+    .source:match("modules/([^/]+)/[^/]+$")
 
   self.name = data.info.name
   self.info = data.info

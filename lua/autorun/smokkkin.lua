@@ -2,7 +2,7 @@ smokkkin = {
   addon = {
     authors = {"smokingplaya"},
     repository = "https://github.com/oosdinc/smokkkinlib",
-    version = "1.0.6"
+    version = "1.0.7"
   }
 }
 

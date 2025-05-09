@@ -1,9 +1,5 @@
 smokkkin.http = {}
 
-if (!CHTTP && smokkkin.util:requireDynamicLibary("chttp")) then
-  return
-end
-
 ---@class CHTTPRequest
 ---@field url string
 ---@field method  HTTPMethods
@@ -15,14 +11,15 @@ end
 ---@field type? string
 ---@field timeout? integer
 
----@type fun(requestData: CHTTPRequest): nil
-CHTTP = CHTTP
-
 --- Sends a HTTP request to server
 ---
 ---@private
 ---@param request HTTPRequest
 function smokkkin.http:send(request)
+  if (!CHTTP) then
+    error("CHTTP not loaded")
+  end
+
   CHTTP({
     url = request.url,
     method = request.method,
